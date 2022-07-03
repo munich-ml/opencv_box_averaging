@@ -7,7 +7,7 @@ BOX_SIZE = 25
 cap = cv2.VideoCapture(0)
 
 while True:
-    ret, bgr = cap.read()
+    _, bgr = cap.read()
     #bgr = cv2.imread(FILENAME,cv2.IMREAD_COLOR)
     hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)
     bgr_median = np.zeros_like(bgr)
@@ -37,11 +37,10 @@ while True:
         if row1 > rows:
             break
         
-    if True:
-        cv2.imshow("bgr", bgr)
-        cv2.imshow("hsv_median", cv2.cvtColor(hsv_median, cv2.COLOR_HSV2BGR))
-        cv2.imshow("bgr_median", bgr_median)
-    
+    cv2.imshow("bgr", bgr)
+    cv2.imshow("hsv_median", cv2.cvtColor(hsv_median, cv2.COLOR_HSV2BGR))
+    cv2.imshow("bgr_median", bgr_median)
+
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
